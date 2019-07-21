@@ -10,6 +10,7 @@ pipeline {
                 sh 'mvn clean package'
                 sh 'mvn test'
                 junit '**/target/surefire-reports/TEST-*.xml'
+                sh "docker build . -t tomcatwebapp:${env.BUILD_ID}"
             }
         }
     }
