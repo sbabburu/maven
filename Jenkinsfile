@@ -1,12 +1,13 @@
 pipeline {
     agent any
-
+    tools {
+        maven 'apache-maven-3.0.1' 
+    }
     stages {
-        stage('Build') {
+        stage('Example') {
             steps {
-                sh 'mvn clean package'
-                sh "docker build . -t tomcatwebapp:${env.BUILD_ID}"
+                sh 'mvn --version'
             }
         }
-}}
-
+    }
+}
